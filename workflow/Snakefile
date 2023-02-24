@@ -1,0 +1,39 @@
+import pandas as pd
+from os.path import join
+
+configfile: 'config/config.yml'
+
+#load participants.tsv file, and strip off sub- from participant_id column
+df = pd.read_table(config['participants_tsv'])
+subjects = df.participant_id.to_list() 
+subjects = [ s.strip('sub-') for s in subjects ]
+
+hemis = 'L R'.split()
+surfaces = 'midthickness inner outer'.split()
+subfields = 'Subiculum CA1 CA2 CA3 CA4'.split()
+
+
+#bids-naming for subject and template (only alphanumeric characters)
+wildcard_constraints:
+    subject="[a-zA-Z0-9]+",
+    hemi="[a-zA-Z0-9]+",
+    surface="[a-zA-Z0-9]+",
+    subfield="[a-zA-Z0-9]+",
+
+localrules: all
+
+include: 'rules/hippunfold_TLE_subfields_displacement.smk'
+include: 'rules/hippunfold_TLE_subfields_curvature_gyrification.smk'
+include: 'rules/hippunfold_TLE_subfields_volumetry.smk'
+
+rule all:
+    input:
+        group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_displacement_analyses/surface-{surface}/', surface=surfaces),
+        group_CA1_tsv_subfield_displacement_softSmoothed_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_displacement_analyses_smoothedSoft/surface-{surface}/', surface=surfaces),
+        #Curvature and Gyrification Metrics for comparison:
+        group_CA1_tsv_subfield_curvature_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_curvature_analyses/surface-midthickness/',
+        group_CA1_tsv_subfield_gyrification_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_gyrification_analyses/surface-midthickness/',
+        #Volumetry for comparison
+        group_volumetry_T1w_subfields_tsv_dir = 'results/hippunfold_volumetry/group_volumetry/'
+
+
