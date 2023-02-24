@@ -18,8 +18,8 @@ Morphometic and Volumetric Analyses using hippunfold in patients with temporal l
 Dependencies: (see https://hippunfold.readthedocs.io/en/latest/getting_started/installation.html)
 - On the cbs_server, best solution is to install and activate the hippunfold virtual environment as follows:
 1) Clone hippunfold with
-git clone https://github.com/khanlab/hippunfold
+- git clone https://github.com/khanlab/hippunfold
 2) Install and activate hippunfold venv
-cd hippunfold
-poetry install
-poetry shell
+- cd hippunfold
+- poetry install
+- poetry shell
