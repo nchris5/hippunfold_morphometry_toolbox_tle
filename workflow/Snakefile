@@ -1,3 +1,4 @@
+#
 import pandas as pd
 from os.path import join
 
@@ -11,7 +12,7 @@ subjects = [ s.strip('sub-') for s in subjects ]
 hemis = 'L R'.split()
 surfaces = 'midthickness inner outer'.split()
 subfields = 'Subiculum CA1 CA2 CA3 CA4'.split()
-
+subgroups = 'ipsilateral_TLE contralateral_TLE bilateral_TLE allAffected_TLE all_TLE controls'.split()
 
 #bids-naming for subject and template (only alphanumeric characters)
 wildcard_constraints:
@@ -34,6 +35,7 @@ rule all:
         group_CA1_tsv_subfield_curvature_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_curvature_analyses/surface-midthickness/',
         group_CA1_tsv_subfield_gyrification_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_gyrification_analyses/surface-midthickness/',
         #Volumetry for comparison
-        group_volumetry_T1w_subfields_tsv_dir = 'results/hippunfold_volumetry/group_volumetry/'
+        group_volumetry_T1w_subfields_tsv_dir = 'results/hippunfold_volumetry/group_volumetry/',
+        stats_group_volumetry_T1w_subfields_tsv_dir = 'results/hippunfold_volumetry/group_volumetry_stats/',
 
 
