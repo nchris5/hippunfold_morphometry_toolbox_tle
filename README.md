@@ -10,5 +10,5 @@ Morphometic and Volumetric Analyses using hippunfold in patients with temporal l
 3) Similar analyses are performed for hippocampal curavture and gyrification, in addition to subfield volumetry
 
 4) All previous metrics are grouped into the following subgroups of interest for subsequent statistical analysis
-  -  ipsilateral_TLE  contralateral_TLE  bilateral_TLE  allAffected_TLE(ipsilateral+bilateral)  all_TLE(ipsilateral+contralateral+bilateral)  controls
+  -  ipsilateral_TLE,  contralateral_TLE,  bilateral_TLE,  allAffected_TLE(ipsilateral+bilateral),  all_TLE(ipsilateral+contralateral+bilateral),  controls,
   -  These subgrouped metrics are provided in the results directory as tsv files with each row representing a participant and their respective metric values
