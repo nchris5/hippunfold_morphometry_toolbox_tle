@@ -26,6 +26,7 @@ localrules: all
 include: 'rules/hippunfold_TLE_subfields_displacement.smk'
 include: 'rules/hippunfold_TLE_subfields_curvature_gyrification.smk'
 include: 'rules/hippunfold_TLE_subfields_volumetry.smk'
+include: 'rules/hippunfold_TLE_subfields_thickness_surfarea.smk'
 
 rule all:
     input:
@@ -34,6 +35,9 @@ rule all:
         #Curvature and Gyrification Metrics for comparison:
         group_CA1_tsv_subfield_curvature_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_curvature_analyses/surface-midthickness/',
         group_CA1_tsv_subfield_gyrification_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_gyrification_analyses/surface-midthickness/',
+        #Thickness and Surfarea Metrics for comparison:
+        group_CA1_tsv_subfield_thickness_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_thickness_analyses/surface-midthickness/',
+        group_CA1_tsv_subfield_surfarea_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_surfarea_analyses/surface-midthickness/',
         #Volumetry for comparison
         group_volumetry_T1w_subfields_tsv_dir = 'results/hippunfold_volumetry/group_volumetry/',
         stats_group_volumetry_T1w_subfields_tsv_dir = 'results/hippunfold_volumetry/group_volumetry_stats/',
