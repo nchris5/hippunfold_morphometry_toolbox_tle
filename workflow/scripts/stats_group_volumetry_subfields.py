@@ -105,13 +105,13 @@ with open(stats_group_volumetry_T1w_subfields_tsv_dir+'/totalHc_volume_ipsilater
     writer = csv.writer(file, delimiter='\t')
     writer.writerow([totalHc_volume_ipsVSconVScontrol_ANOVA_f, totalHc_volume_ipsVSconVScontrol_ANOVA_p])
 #2) Save subfields ipsilateral vs. contralateral bonferroni-corrected t, p, pCorr
-with open('subfield_volumes_ipsilateral_vs_contralateral_ttestBonferroni_t_p_pCorr.tsv', 'w', newline='') as file:
+with open(stats_group_volumetry_T1w_subfields_tsv_dir+'/subfield_volumes_ipsilateral_vs_contralateral_ttestBonferroni_t_p_pCorr.tsv', 'w', newline='') as file:
     writer = csv.writer(file, delimiter='\t')
     for key, value in subfield_volumes_ipsVScon_ttestBonferroni_t_p_pCorr_dict.items():
         row = [key, value['t'], value['p'], value['pCorr_bonferroni']]
         writer.writerow(row)
 #3) Save subfields ipsilateral vs. controls bonferroni-corrected t, p, pCorr
-with open('subfield_volumes_ipsVScontrols_ttestBonferroni_t_p_pCorr.tsv', 'w', newline='') as file:
+with open(stats_group_volumetry_T1w_subfields_tsv_dir+'/subfield_volumes_ipsVScontrols_ttestBonferroni_t_p_pCorr.tsv', 'w', newline='') as file:
     writer = csv.writer(file, delimiter='\t')
     for key, value in subfield_volumes_ipsVScontrols_ttestBonferroni_t_p_pCorr_dict.items():
         row = [key, value['t'], value['p'], value['pCorr_bonferroni']]
