@@ -13,6 +13,7 @@ hemis = 'L R'.split()
 surfaces = 'midthickness inner outer'.split()
 subfields = 'Subiculum CA1 CA2 CA3 CA4'.split()
 subgroups = 'ipsilateral_TLE contralateral_TLE bilateral_TLE allAffected_TLE all_TLE controls'.split()
+hippunfold_metrics = config['hippunfold_metrics_for_analysis']
 
 #bids-naming for subject and template (only alphanumeric characters)
 wildcard_constraints:
@@ -23,21 +24,16 @@ wildcard_constraints:
 
 localrules: all
 
-include: 'rules/hippunfold_TLE_subfields_displacement.smk'
-include: 'rules/hippunfold_TLE_subfields_curvature_gyrification.smk'
+include: 'rules/hippunfold_TLE_subfields_displacement_metric.smk'
+include: 'rules/hippunfold_TLE_subfields_additional_metrics.smk'
 include: 'rules/hippunfold_TLE_subfields_volumetry.smk'
-include: 'rules/hippunfold_TLE_subfields_thickness_surfarea.smk'
 
 rule all:
     input:
-        group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_displacement_analyses/surface-{surface}/', surface=surfaces),
-        group_CA1_tsv_subfield_displacement_softSmoothed_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_displacement_analyses_smoothedSoft/surface-{surface}/', surface=surfaces),
-        #Curvature and Gyrification Metrics for comparison:
-        group_CA1_tsv_subfield_curvature_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_curvature_analyses/surface-midthickness/',
-        group_CA1_tsv_subfield_gyrification_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_gyrification_analyses/surface-midthickness/',
-        #Thickness and Surfarea Metrics for comparison:
-        group_CA1_tsv_subfield_thickness_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_thickness_analyses/surface-midthickness/',
-        group_CA1_tsv_subfield_surfarea_spaceUnfold_mPD_atEachAP_dir = 'results/hippunfold_morphometry/group_surfarea_analyses/surface-midthickness/',
+        group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_{metric}_analysis/surface-{surface}/', metric='displacement', surface=surfaces),
+        group_CA1_tsv_subfield_displacement_softSmoothed_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_{metric}_analysis_smoothedSoft/surface-{surface}/', metric='displacement', surface=surfaces),
+        #Additional Hippunfold Metrics for comparison:
+        group_CA1_tsv_subfield_metric_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_{metric}_analyses/surface-{surface}/', metric=hippunfold_metrics, surface='midthickness'), 
         #Volumetry for comparison
         group_volumetry_T1w_subfields_tsv_dir = 'results/hippunfold_volumetry/group_volumetry/',
         stats_group_volumetry_T1w_subfields_tsv_dir = 'results/hippunfold_volumetry/group_volumetry_stats/',

@@ -105,8 +105,8 @@ rule displacement_analyses_spaceUnfold:
     params:
         subfield_names = subfields
     output:
-        displacement_subfields_analyses_Unfolded_to_smoothed_dir = directory('work/hippunfold_morphometry/sub-{subject}/displacement_analyses/{hemi}_surf-{surface}/displacement_mPD_at_eachAP/'),
-        displacement_subfields_analyses_Unfolded_to_smoothed_FFTandPSD_dir = directory('work/hippunfold_morphometry/sub-{subject}/displacement_analyses/{hemi}_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/'),
+        displacement_subfields_analyses_Unfolded_to_smoothed_dir = directory('work/hippunfold_morphometry/sub-{subject}/displacement_analysis/{hemi}_surf-{surface}/displacement_mPD_at_eachAP/'),
+        displacement_subfields_analyses_Unfolded_to_smoothed_FFTandPSD_dir = directory('work/hippunfold_morphometry/sub-{subject}/displacement_analysis/{hemi}_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/'),
     group: 'surfsLR'
     log: 'logs/hippunfold_morphometry/sub-{subject}/sub-{subject}_hemi-{hemi}_{surface}_displacement_analyses_spaceUnfold.log'
     threads: 8
@@ -125,14 +125,14 @@ rule group_displacement_analyses_spaceUnfold:
     params:
         demographics_tsv = config['demographics_tsv'],
         #Actual inputs (indexing inputs in python starts at 1)
-        L_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses/L_surf-{surface}/displacement_mPD_at_eachAP/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
-        L_CA1_tsv_FFT_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses/L_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_FFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
-        L_CA1_tsv_FFT_PSD_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses/L_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_PSDofFFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
-        R_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses/R_surf-{surface}/displacement_mPD_at_eachAP/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
-        R_CA1_tsv_FFT_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses/R_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_FFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
-        R_CA1_tsv_FFT_PSD_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses/R_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_PSDofFFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        L_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis/L_surf-{surface}/displacement_mPD_at_eachAP/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        L_CA1_tsv_FFT_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis/L_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_FFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        L_CA1_tsv_FFT_PSD_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis/L_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_PSDofFFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        R_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis/R_surf-{surface}/displacement_mPD_at_eachAP/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        R_CA1_tsv_FFT_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis/R_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_FFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        R_CA1_tsv_FFT_PSD_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis/R_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_PSDofFFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
     output:
-        group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = directory('results/hippunfold_morphometry/group_displacement_analyses/surface-{surface}/'),
+        group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = directory('results/hippunfold_morphometry/group_displacement_analysis/surface-{surface}/'),
     threads: 8
     group: 'groupSurfs'
     log:
@@ -148,8 +148,8 @@ rule displacement_analyses_smoothedSoft_spaceUnfold:
     params:
         subfield_names = subfields
     output:
-        displacement_subfields_analyses_softSmoothed_Unfolded_to_smoothed_dir = directory('work/hippunfold_morphometry/sub-{subject}/displacement_analyses_smoothedSoft/{hemi}_surf-{surface}/displacement_mPD_at_eachAP/'),
-        displacement_subfields_analyses_softSmoothed_Unfolded_to_smoothed_FFTandPSD_dir = directory('work/hippunfold_morphometry/sub-{subject}/displacement_analyses_smoothedSoft/{hemi}_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/'),
+        displacement_subfields_analyses_softSmoothed_Unfolded_to_smoothed_dir = directory('work/hippunfold_morphometry/sub-{subject}/displacement_analysis_smoothedSoft/{hemi}_surf-{surface}/displacement_mPD_at_eachAP/'),
+        displacement_subfields_analyses_softSmoothed_Unfolded_to_smoothed_FFTandPSD_dir = directory('work/hippunfold_morphometry/sub-{subject}/displacement_analysis_smoothedSoft/{hemi}_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/'),
     group: 'surfsLR'
     log: 'logs/hippunfold_morphometry/sub-{subject}/sub-{subject}_hemi-{hemi}_{surface}_displacement_analyses_smoothed_soft_spaceUnfold.log'
     threads: 8
@@ -163,14 +163,14 @@ rule group_displacement_analyses_smoothedSoft_spaceUnfold:
     params:
         demographics_tsv = config['demographics_tsv'],
         #Actual inputs
-        L_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses_smoothedSoft/L_surf-{surface}/displacement_mPD_at_eachAP/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
-        L_CA1_tsv_FFT_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses_smoothedSoft/L_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_FFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
-        L_CA1_tsv_FFT_PSD_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses_smoothedSoft/L_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_PSDofFFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
-        R_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses_smoothedSoft/R_surf-{surface}/displacement_mPD_at_eachAP/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
-        R_CA1_tsv_FFT_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses_smoothedSoft/R_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_FFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
-        R_CA1_tsv_FFT_PSD_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analyses_smoothedSoft/R_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_PSDofFFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        L_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis_smoothedSoft/L_surf-{surface}/displacement_mPD_at_eachAP/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        L_CA1_tsv_FFT_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis_smoothedSoft/L_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_FFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        L_CA1_tsv_FFT_PSD_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis_smoothedSoft/L_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-L_space-unfolded_subfield-CA1_BodyOnly_PSDofFFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        R_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis_smoothedSoft/R_surf-{surface}/displacement_mPD_at_eachAP/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        R_CA1_tsv_FFT_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis_smoothedSoft/R_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_FFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
+        R_CA1_tsv_FFT_PSD_subfield_displacement_spaceUnfold_mPD_atEachAP = expand('work/hippunfold_morphometry/sub-{subject}/displacement_analysis_smoothedSoft/R_surf-{surface}/displacement_mPD_at_eachAP_FFTandPSD/sub-{subject}_hemi-R_space-unfolded_subfield-CA1_BodyOnly_PSDofFFT_mPDdisplacement_mAPcentered_at_each_AP.tsv', subject=subjects, allow_missing=True),
     output:
-        group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = directory('results/hippunfold_morphometry/group_displacement_analyses_smoothedSoft/surface-{surface}/'),
+        group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = directory('results/hippunfold_morphometry/group_displacement_analysis_smoothedSoft/surface-{surface}/'),
     group: 'groupSurfs'
     log:
         'logs/hippunfold_morphometry/surf-{surface}_group_displacement_analyses_smoothed_soft.log'

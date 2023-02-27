@@ -12,6 +12,8 @@ surf_smoothing_iter: 50
 surf_smoothing_soft_strength: 0.5
 surf_smoothing_soft_iter: 10
 
+#4) Additional hippunfold_metrics in a list to analyze in the pipeline. Possible values are 'curvature', 'gyrification', 'thickness', 'surfarea'
+hippunfold_metrics_for_analysis: ['curvature', 'gyrification', 'thickness', 'surfarea']
 
 ### Preset inputs pulled from hippunfold_dir
 #1) surface.surf.gii (inner midthickness outer)
@@ -21,29 +23,20 @@ surf_spaceUnfold: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9
 #2) Subfield labels.label.gii (1D labelvalue for each subfield)
 label_subfields_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_atlas-bigbrain_subfields.label.gii'
 
-#3) Curvature.shape.gii (1D metric normalized curvature at midthickness)
-shape_curvature_midthickness_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_curvature.shape.gii'
+#3) HippunfoldMetrics.shape.gii (1D metric normalized metric at midthickness)
+shape_metric_midthickness_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_{metric}.shape.gii'
 
-#4) Gyrification.shape.gii (1D metric normalized gyrification at midthickness)
-shape_gyrification_midthickness_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_gyrification.shape.gii'
-
-#5) Thickness.shape.gii (1D metric normalized thickness)
-shape_thickness_midthickness_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_thickness.shape.gii'
-
-#6) Surfarea.shape.gii (1D metric normalized surfarea at midthickness)
-shape_surfarea_midthickness_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_surfarea.shape.gii'
-
-#7) Transforms and Refvols for T1<-->Unfold
-#7a) Xfm from T1w-->Unfold
+#4) Transforms and Refvols for T1<-->Unfold
+#4a) Xfm from T1w-->Unfold
 xfm_fromT1w_toUnfold: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/warps/sub-{subject}_hemi-{hemi}_label-hipp_from-T1w_to-unfold_mode-image_xfm.nii.gz'
-#7b) Refvol for Unfold
+#4b) Refvol for Unfold
 refvol_spaceUnfold: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/warps/sub-{subject}_space-unfold_label-hipp_refvol.nii.gz'
 
-#7c) Xfm from Unfold-->T1w
+#4c) Xfm from Unfold-->T1w
 xfm_fromUnfold_toT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/warps/sub-{subject}_hemi-{hemi}_label-hipp_from-unfold_to-T1w_mode-image_xfm.nii.gz'
-#7d) Refvol for T1w
+#4d) Refvol for T1w
 refvol_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/anat/sub-{subject}_desc-preproc_T1w.nii.gz'
 
-#8) Inputs and params for subfield volumetry
+#5) Inputs and params for subfield volumetry
 dseg_subfields_bigbrain_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/anat/sub-{subject}_hemi-{hemi}_space-T1w_desc-subfields_atlas-bigbrain_dseg.nii.gz'
 voxel_shape: [0.7, 0.7, 0.7]
