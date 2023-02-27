@@ -1,0 +1,4 @@
+participant_id	reason_for_exclusion
+sub-C014	no_signal_RTL
+sub-C017	odd_signal_RHc
+sub-C032	vertically_rotated_RHc
