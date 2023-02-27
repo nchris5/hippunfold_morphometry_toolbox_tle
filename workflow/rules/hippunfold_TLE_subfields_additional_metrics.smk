@@ -60,6 +60,6 @@ rule group_metric_analyses_spaceUnfold:
     log:
         'logs/hippunfold_morphometry/surf-midthickness_group_{metric}_analyses.log'
     script:
-        '../scripts/group_metric_morphometry_surfs_analysis.py'
+        '../scripts/group_metrics_morphometry_midthickness_analysis.py'
 
 
