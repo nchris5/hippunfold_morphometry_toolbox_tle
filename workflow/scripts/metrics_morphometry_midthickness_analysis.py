@@ -144,7 +144,7 @@ for sf_idx,sf_name in enumerate(subfield_names):
 
         #1) Save each AP's average (across PD) absolute and mean centered metric values (also save non-mean centered) in current subfield (with current extraction method)
         np.savetxt(outdir_metric_mPD_at_eachAP_data+'/sub-'+subj+'_hemi-'+hemi+'_space-unfolded_subfield-'+sf_name+'_'+method+'_mPD'+metric+'_at_each_AP.tsv', metric_nii_midIO_sf_mPD_extractAP, delimiter='\t')
-        np.savetxt(outdir_metric_mPD_at_eachAP_data+'/sub-'+subj+'_hemi-'+hemi+'_space-unfolded_subfield-'+sf_name+'_'+method+'_mPD'+metric'_mAPcentered_at_each_AP.tsv', metric_nii_midIO_sf_mPD_extractAP_mAPcentered, delimiter='\t')
+        np.savetxt(outdir_metric_mPD_at_eachAP_data+'/sub-'+subj+'_hemi-'+hemi+'_space-unfolded_subfield-'+sf_name+'_'+method+'_mPD'+metric+'_mAPcentered_at_each_AP.tsv', metric_nii_midIO_sf_mPD_extractAP_mAPcentered, delimiter='\t')
         #2) Save FFT and PSD of each AP's average (across PD) metric values in current subfield
         np.savetxt(outdir_metric_mPD_at_eachAP_FFTandPSD+'/sub-'+subj+'_hemi-'+hemi+'_space-unfolded_subfield-'+sf_name+'_'+method+'_FFT_mPD'+metric+'_mAPcentered_at_each_AP.tsv', fft_metric_nii_midIO_sf_mPD_extractAP_mAPcentered, delimiter='\t')
         np.savetxt(outdir_metric_mPD_at_eachAP_FFTandPSD+'/sub-'+subj+'_hemi-'+hemi+'_space-unfolded_subfield-'+sf_name+'_'+method+'_FFTfreqMM_mPD'+metric+'_mAPcentered_at_each_AP.tsv', freq_mm, delimiter='\t')
