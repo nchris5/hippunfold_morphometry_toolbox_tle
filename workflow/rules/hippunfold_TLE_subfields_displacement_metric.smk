@@ -183,26 +183,17 @@ rule group_displacement_analyses_smoothedSoft_spaceUnfold:
 #-------------- IN DEV --------------#
 #Descriptive group statistics (Mean Std, Sterror) of rule  group_displacement_analyses_spaceUnfold output displacement values, FFT, and PSD.
 #This separates groups based on ipsilateral_TLE, contralateral_TLE, controls, bilateral_TLE, ipsilateral+bilateral_TLE (allAffected_TLE), and ipsilateral+contralateral+bilateral_TLE (all_TLE)
-#The following outputs are returned:
-#1)  Each groups individual displacement values, FFT, and PSD for each subject (tsvs, each shape is #subjects * metric placed in a list in the 2nd column, which has size 87)
-#2)  Each groups individual mean/std/sterror of displacement values, FFT, and PSD across subjects (tsvs, each shape is length of metric (87) * 3 (cols = mean, std, sterror)
-#3)  Line plots of mean/sterrors for each group (single graph plots all groups):
-#rule stats_group_displacement_analyses_spaceUnfold_CA1:
-#    input:
-#        group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = rules.group_displacement_analyses_spaceUnfold.output.group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir,
-#    params:
-#        #Actual inputs (displacement values, FFT of displacement, PSD of displacement)
-#        group_LRcombined_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP = 'work/hippunfold_morphometry/group_displacement_analysis/surface-{surface}/group_hemi-LR_label-hipp_{surface}_CA1_BodyOnly_mPDdisplacement_at_each_AP.tsv',
-#        group_LRcombined_CA1_tsv_subfield_FFT_displacement_spaceUnfold_mPD_atEachAP = 'work/hippunfold_morphometry/group_displacement_analysis/surface-{surface}/group_hemi-LR_label-hipp_{surface}_CA1_BodyOnly_FFT_mPDdisplacement_at_each_AP.tsv',
-#        group_LRcombined_CA1_tsv_subfield_FFT_PSD_displacement_spaceUnfold_mPD_atEachAP = 'work/hippunfold_morphometry/group_displacement_analysis/surface-{surface}/group_hemi-LR_label-hipp_{surface}_CA1_BodyOnly_FFT_PSD_mPDdisplacement_at_each_AP.tsv',
-#    output:
-#        stats_group_LRcombined_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = directory('work/hippunfold_morphometry/group_displacement_analysis/surface-{surface}_stats/displacement_value_analysis/'),
-#        stats_group_LRcombined_CA1_tsv_subfield_FFT_displacement_spaceUnfold_mPD_atEachAP_dir = directory('work/hippunfold_morphometry/group_displacement_analysis/surface-{surface}_stats/displacement_value_FFT_analysis/'),
-#        stats_group_LRcombined_CA1_tsv_subfield_FFT_PSD_displacement_spaceUnfold_mPD_atEachAP_dir = directory('work/hippunfold_morphometry/group_displacement_analysis/surface-{surface}_stats/displacement_value_FFT_PSD_analysis/'),
-#    group: 'groupSurfs'
-#    log:
-#        'logs/hippunfold_morphometry/stats_surf-{surface}_group_displacement_analyses.log'
-#    threads: 8
-#    script:
-#        '../scripts/stats_group_displacement_morphometry_surfs_analysis.py'
-#    ###For some reason PSD comes out with size 2 smaller instead of expected, need to figure out why this is
+rule stats_group_displacement_analyses_spaceUnfold:
+    input:
+        group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = rules.group_displacement_analyses_spaceUnfold.output,
+    params:
+        group_names = subgroups,
+        analysis_types = ['mPDdisplacement_mAPcentered', 'FFT_mPDdisplacement_mAPcentered', 'PSDofFFT_mPDdisplacement_mAPcentered'],
+    output:
+        stats_group_CA1_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = directory('results/hippunfold_morphometry/group_displacement_analysis_stats/surface-{surface}/'), 
+    group: 'groupSurfs'
+    log:
+        'logs/hippunfold_morphometry/stats_surf-{surface}_group_displacement_analyses.log'
+    threads: 8
+    script:
+        '../scripts/stats_group_displacement_morphometry_surfs_analysis.py'

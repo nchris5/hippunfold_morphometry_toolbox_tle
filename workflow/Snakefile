@@ -30,7 +30,7 @@ include: 'rules/hippunfold_TLE_subfields_volumetry.smk'
 
 rule all:
     input:
-        group_CA1_tsv_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_{metric}_analysis/surface-{surface}/', metric='displacement', surface=surfaces),
+        stats_group_CA1_subfield_displacement_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_{metric}_analysis_stats/surface-{surface}/', metric='displacement', surface=surfaces),
         group_CA1_tsv_subfield_displacement_softSmoothed_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_{metric}_analysis_smoothedSoft/surface-{surface}/', metric='displacement', surface=surfaces),
         #Additional Hippunfold Metrics for comparison:
         group_CA1_tsv_subfield_metric_spaceUnfold_mPD_atEachAP_dir = expand('results/hippunfold_morphometry/group_{metric}_analyses/surface-{surface}/', metric=hippunfold_metrics, surface='midthickness'), 
