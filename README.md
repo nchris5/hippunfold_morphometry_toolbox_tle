@@ -23,9 +23,9 @@ Morphometic and Volumetric Analyses using hippunfold in patients with temporal l
 
 
 Installation Instructions:
-1) Clone rep with
-- git clone https://github.com/nchris5/hippunfold_morphometry_toolbox_tle
+1) Clone rep with:
+git clone https://github.com/nchris5/hippunfold_morphometry_toolbox_tle
 2) Poetry install and activate venv
-- cd hippunfold_morphometry_toolbox_tle
-- poetry install
-- poetry shell
+cd hippunfold_morphometry_toolbox_tle
+poetry install
+poetry shell
