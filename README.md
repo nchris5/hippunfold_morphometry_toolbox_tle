@@ -14,9 +14,11 @@ Morphometic and Volumetric Analyses using hippunfold in patients with temporal l
   -  ipsilateral_TLE,  contralateral_TLE,  bilateral_TLE, allAffected_TLE(ipsilateral+bilateral),  all_TLE(ipsilateral+contralateral+bilateral), controls
 
 ---INDEV---
+
 5) Quantification and group statistical analyses of CA1 inferior hippocampal digitations through fourier analyses
 -  A) Frequency (number of digitations)
 -  B) Amplitude (size of digitations)
+
 ---INDEV---
 
 
