@@ -1,10 +1,10 @@
 ### Configureable variables
 #1) Paths to participants and demographics tsvs
-participants_tsv: 'config/participants_alldata_present_19_02_2023.tsv'
-demographics_tsv: 'config/demographics_alldata_present_19_02_2023.tsv'
+participants_tsv: 'config/participants.tsv'
+demographics_tsv: 'config/demographics.tsv'
 
 #2) Path to directory containing hippunfold outputs
-hippunfold_dir: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/'
+hippunfold_dir: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset/derivatives/hippunfold_v1.2.0/hippunfold/'
 
 #3) Parameters for wb_command -surface-smoothing used to calculate displacement values from unsmoothed (or softSmooted) surfaces to the fully smoothed surface
 surf_smoothing_strength: 0.9
@@ -17,26 +17,31 @@ hippunfold_metrics_for_analysis: ['curvature', 'gyrification', 'thickness', 'sur
 
 ### Preset inputs pulled from hippunfold_dir
 #1) surface.surf.gii (inner midthickness outer)
-surf_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_{surface}.surf.gii'
-surf_spaceUnfold: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-unfolded_den-0p5mm_label-hipp_{surface}.surf.gii'
+surf_spaceT1w: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset/derivatives/hippunfold_v1.2.0/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_{surface}.surf.gii'
+surf_spaceUnfold: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset/derivatives/hippunfold_v1.2.0/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-unfolded_den-0p5mm_label-hipp_{surface}.surf.gii'
 
 #2) Subfield labels.label.gii (1D labelvalue for each subfield)
-label_subfields_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_atlas-bigbrain_subfields.label.gii'
+label_subfields_spaceT1w: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset/derivatives/hippunfold_v1.2.0/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_atlas-bigbrain_subfields.label.gii'
 
 #3) HippunfoldMetrics.shape.gii (1D metric normalized metric at midthickness)
-shape_metric_midthickness_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_{metric}.shape.gii'
+shape_metric_midthickness_spaceT1w: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset/derivatives/hippunfold_v1.2.0/hippunfold/sub-{subject}/surf/sub-{subject}_hemi-{hemi}_space-T1w_den-0p5mm_label-hipp_{metric}.shape.gii'
 
 #4) Transforms and Refvols for T1<-->Unfold
 #4a) Xfm from T1w-->Unfold
-xfm_fromT1w_toUnfold: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/warps/sub-{subject}_hemi-{hemi}_label-hipp_from-T1w_to-unfold_mode-image_xfm.nii.gz'
+xfm_fromT1w_toUnfold: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset/derivatives/hippunfold_v1.2.0/hippunfold/sub-{subject}/warps/sub-{subject}_hemi-{hemi}_label-hipp_from-T1w_to-unfold_mode-image_xfm.nii.gz'
 #4b) Refvol for Unfold
-refvol_spaceUnfold: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/warps/sub-{subject}_space-unfold_label-hipp_refvol.nii.gz'
+refvol_spaceUnfold: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset/derivatives/hippunfold_v1.2.0/hippunfold/sub-{subject}/warps/sub-{subject}_space-unfold_label-hipp_refvol.nii.gz'
 
 #4c) Xfm from Unfold-->T1w
-xfm_fromUnfold_toT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/warps/sub-{subject}_hemi-{hemi}_label-hipp_from-unfold_to-T1w_mode-image_xfm.nii.gz'
+xfm_fromUnfold_toT1w: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset/derivatives/hippunfold_v1.2.0/hippunfold/sub-{subject}/warps/sub-{subject}_hemi-{hemi}_label-hipp_from-unfold_to-T1w_mode-image_xfm.nii.gz'
 #4d) Refvol for T1w
-refvol_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/anat/sub-{subject}_desc-preproc_T1w.nii.gz'
+refvol_spaceT1w: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset/derivatives/hippunfold_v1.2.0/hippunfold/sub-{subject}/anat/sub-{subject}_desc-preproc_T1w.nii.gz'
 
 #5) Inputs and params for subfield volumetry
-dseg_subfields_bigbrain_spaceT1w: '/home/ROBARTS/nchristidis/graham/projects/ctb-akhanf/myousif9/snsx/output/snsx_hippunfold_12152022/hippunfold/sub-{subject}/anat/sub-{subject}_hemi-{hemi}_space-T1w_desc-subfields_atlas-bigbrain_dseg.nii.gz'
+dseg_subfields_bigbrain_spaceT1w: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset/derivatives/hippunfold_v1.2.0/hippunfold/sub-{subject}/anat/sub-{subject}_hemi-{hemi}_space-T1w_desc-subfields_atlas-bigbrain_dseg.nii.gz'
 voxel_shape: [0.7, 0.7, 0.7]
+
+
+#Grouped datasets dir
+#all_datasets_bids_dir: '/home/ROBARTS/nchristidis/graham/scratch/digitations_all_datasets/combined_dataset'
+#grad_coeff: '/project/6050199/akhanf/opt/grad/.coeff_AC84.grad'
