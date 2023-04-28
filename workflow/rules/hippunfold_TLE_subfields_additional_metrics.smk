@@ -33,7 +33,7 @@ rule metric_analyses_spaceUnfold:
     group: 'metric_subj_hemi'
     log: 'logs/hippunfold_morphometry/sub-{subject}/sub-{subject}_hemi-{hemi}_{metric}_analyses_spaceUnfold.log'
     script:
-        '../scripts/metric_morphometry_midthickness_analysis.py'
+        '../scripts/metrics_morphometry_midthickness_analysis.py'
 
 #Group the tsv outputs of metric_analyses_spaceUnfold into combined tsvs to permit future analyses on the group data
 #    The output tsvs are created for the following subgroups: ipsilateral_TLE, contralateral_TLE, bilateral_TLE, allAffected_TLE (ipsilateral + bilateral), all_TLE (ipsilateral, contralateral, bilateral), controls. 
